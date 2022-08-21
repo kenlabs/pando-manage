@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 import PageContainer from "../../components/PageContainer";
@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Snapshot from "../../components/Snapshot";
+import { getSnapshots } from "apis/snapshots";
 const rows = [
   {
     id: "1kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
@@ -101,6 +102,13 @@ const Snapshots = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+  const [snapshots, setSnapshots] = useState([]);
+
+  useEffect(() => {
+    getSnapshots().then((res) => {
+      setSnapshots(res.data?.Data);
+    });
+  }, []);
 
   return (
     <Page pageTitle="Snapshots">

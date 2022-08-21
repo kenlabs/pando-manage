@@ -1,12 +1,13 @@
 import PageContainer from "../../components/PageContainer";
 import Page from "material-ui-shell/lib/containers/Page";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProviderCard from "../../components/ProviderCard";
 
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Grid from "@mui/material/Grid";
 import Provider from "../../components/Provider";
+import { getProvidersOrProvider } from "apis/providers";
 const cards = [
   {
     name: "Dealbot",
@@ -32,6 +33,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 const Providers = () => {
+  const [providers, setProviders] = useState([]);
   const [open, setOpen] = useState();
 
   const handleClickOpen = () => {
@@ -41,6 +43,12 @@ const Providers = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  useEffect(() => {
+    getProvidersOrProvider().then((res) => {
+      const providers = res.data?.Data?.registeredProviders;
+      setProviders(providers);
+    });
+  }, []);
   return (
     <Page pageTitle="Providers">
       <PageContainer>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import { Grid, Divider } from "@mui/material";
 import { Box } from "@mui/system";
@@ -6,12 +6,20 @@ import Chart from "../../components/Chart/Provider";
 import Page from "material-ui-shell/lib/containers/Page";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import { getSystemInfo } from "apis/system";
 const Provider = ({ onClose }) => {
   const [value, setValue] = React.useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const [systemInfo, setSystemInfo] = useState();
+
+  useEffect(() => {
+    getSystemInfo().then((res) => {
+      setSystemInfo(res.data?.Data);
+    });
+  }, []);
 
   return (
     <Page pageTitle="Pando Info">
@@ -53,7 +61,7 @@ const Provider = ({ onClose }) => {
                 wordBreak: "break-word",
               }}
             >
-              kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
+              {systemInfo?.PeerID}
             </Typography>
             <Divider></Divider>
 
@@ -67,7 +75,7 @@ const Provider = ({ onClose }) => {
                 wordBreak: "break-word",
               }}
             >
-              /ip4/136.144.57.12/tcp/4001
+              {systemInfo?.Addresses?.HttpAPI}
             </Typography>
 
             <Divider></Divider>
@@ -82,7 +90,7 @@ const Provider = ({ onClose }) => {
                 wordBreak: "break-word",
               }}
             >
-              /ip4/136.144.57.12/tcp/4001
+              {systemInfo?.Addresses?.GraphQLAPI}
             </Typography>
 
             <Divider></Divider>
@@ -97,7 +105,7 @@ const Provider = ({ onClose }) => {
                 wordBreak: "break-word",
               }}
             >
-              /ip4/136.144.57.12/tcp/4001
+              {systemInfo?.Addresses?.GraphSyncAPI}
             </Typography>
 
             <Divider></Divider>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -10,12 +10,21 @@ import Chart from "../Chart/Provider";
 
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-const Provider = ({ onClose }) => {
-  const [value, setValue] = React.useState("1");
 
+import { getProvidersOrProvider } from "apis/providers";
+const Provider = ({ onClose, id }) => {
+  const [value, setValue] = React.useState("1");
+  const [provider, setProvider] = useState([]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    getProvidersOrProvider().then((res) => {
+      const provider = res.data?.Data?.registeredProviders;
+      setProvider(provider);
+    });
+  }, []);
 
   return (
     <>
