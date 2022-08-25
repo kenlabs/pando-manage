@@ -11,8 +11,10 @@ import Chart from "../Chart/Provider";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 
+import dayjs from "dayjs";
+
 import { getProvidersOrProvider } from "apis/providers";
-const Provider = ({ onClose, id }) => {
+const Provider = ({ onClose, id, providerDetail }) => {
   const [value, setValue] = React.useState("1");
   const [provider, setProvider] = useState([]);
   const handleChange = (event, newValue) => {
@@ -67,7 +69,7 @@ const Provider = ({ onClose, id }) => {
                 wordBreak: "break-word",
               }}
             >
-              kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
+              {providerDetail?.AddrInfo?.ID}
             </Typography>
             <Divider></Divider>
 
@@ -81,7 +83,14 @@ const Provider = ({ onClose, id }) => {
                 wordBreak: "break-word",
               }}
             >
-              /ip4/136.144.57.12/tcp/4001
+              {/* /ip4/136.144.57.12/tcp/4001 */}
+              {providerDetail?.AddrInfo?.Addrs.map((addr) => {
+                return (
+                  <>
+                    {addr} <br />
+                  </>
+                );
+              })}
             </Typography>
             <Divider></Divider>
 
@@ -95,7 +104,11 @@ const Provider = ({ onClose, id }) => {
                 wordBreak: "break-word",
               }}
             >
-              2022-07-01 22:22:22
+              {providerDetail?.LastContactTime
+                ? dayjs(providerDetail?.LastContactTime).format(
+                    "YYYY-MM-DD HH:mm:ss"
+                  )
+                : "-"}
             </Typography>
 
             <Divider></Divider>
@@ -109,7 +122,9 @@ const Provider = ({ onClose, id }) => {
                 wordBreak: "break-word",
               }}
             >
-              kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
+              {
+                // TODO: 确认字段
+              }
             </Typography>
           </Box>
         </Grid>

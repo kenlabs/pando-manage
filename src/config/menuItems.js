@@ -15,31 +15,31 @@ const getMenuItems = (props) => {
 
   const isAuthorized = auth.isAuthenticated;
 
-  if (isAuthMenuOpen || !isAuthorized) {
-    return [
-      {
-        value: "/my_account",
-        primaryText: intl.formatMessage({
-          id: "my_account",
-          defaultMessage: "My Account",
-        }),
-        leftIcon: <AccountBoxIcon />,
-      },
-      {
-        value: "/signin",
-        onClick: isAuthorized
-          ? () => {
-              setAuth({ isAuthenticated: false });
-            }
-          : () => {},
-        visible: true,
-        primaryText: isAuthorized
-          ? intl.formatMessage({ id: "sign_out" })
-          : intl.formatMessage({ id: "sign_in" }),
-        leftIcon: isAuthorized ? <ExitToAppIcon /> : <LockIcon />,
-      },
-    ];
-  }
+  // if (isAuthMenuOpen || !isAuthorized) {
+  //   return [
+  //     {
+  //       value: "/my_account",
+  //       primaryText: intl.formatMessage({
+  //         id: "my_account",
+  //         defaultMessage: "My Account",
+  //       }),
+  //       leftIcon: <AccountBoxIcon />,
+  //     },
+  //     {
+  //       value: "/signin",
+  //       onClick: isAuthorized
+  //         ? () => {
+  //             setAuth({ isAuthenticated: false });
+  //           }
+  //         : () => {},
+  //       visible: true,
+  //       primaryText: isAuthorized
+  //         ? intl.formatMessage({ id: "sign_out" })
+  //         : intl.formatMessage({ id: "sign_in" }),
+  //       leftIcon: isAuthorized ? <ExitToAppIcon /> : <LockIcon />,
+  //     },
+  //   ];
+  // }
   return [
     {
       value: "/providers",

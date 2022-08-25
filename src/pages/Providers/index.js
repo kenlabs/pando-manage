@@ -8,35 +8,20 @@ import Slide from "@mui/material/Slide";
 import Grid from "@mui/material/Grid";
 import Provider from "../../components/Provider";
 import { getProvidersOrProvider } from "apis/providers";
-const cards = [
-  {
-    name: "Dealbot",
-  },
-  {
-    name: "FilDrive",
-  },
-  {
-    name: "Bidbot",
-  },
-  {
-    name: "FileCoin Green",
-  },
-  {
-    name: "Filrep",
-  },
-  {
-    name: "Large Scale Client",
-  },
-];
+import dayjs from "dayjs";
 
+console.log(
+  dayjs("2022-08-22T13:13:56.710937469Z").format("YYYY-MM-DD HH:mm:ss")
+);
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 const Providers = () => {
   const [providers, setProviders] = useState([]);
   const [open, setOpen] = useState();
-
-  const handleClickOpen = () => {
+  const [selected, setSelected] = useState();
+  const handleClickOpen = (provider) => {
+    setSelected(provider);
     setOpen(true);
   };
 
@@ -45,7 +30,7 @@ const Providers = () => {
   };
   useEffect(() => {
     getProvidersOrProvider().then((res) => {
-      const providers = res.data?.Data?.registeredProviders;
+      const providers = res.data?.Data;
       setProviders(providers);
     });
   }, []);
@@ -53,18 +38,28 @@ const Providers = () => {
     <Page pageTitle="Providers">
       <PageContainer>
         <Grid container spacing={10}>
-          {cards.map((item, index) => {
-            return (
-              <Grid item key={index}>
-                <ProviderCard
-                  name={item.name}
-                  onClickDetail={() => {
-                    handleClickOpen();
-                  }}
-                />
-              </Grid>
-            );
-          })}
+          {providers
+            .map((provider) => ({
+              ...provider,
+              name:
+                provider.Name ||
+                provider.AddrInfo?.ID.substr(
+                  provider.AddrInfo?.ID?.length - 5,
+                  provider.AddrInfo?.ID.length - 1
+                ),
+            }))
+            .map((provider, index) => {
+              return (
+                <Grid item key={index}>
+                  <ProviderCard
+                    name={provider.name}
+                    onClickDetail={() => {
+                      handleClickOpen(provider);
+                    }}
+                  />
+                </Grid>
+              );
+            })}
         </Grid>
       </PageContainer>
       <Dialog
@@ -73,7 +68,7 @@ const Providers = () => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <Provider onClose={handleClose} />
+        <Provider providerDetail={selected} onClose={handleClose} />
       </Dialog>
     </Page>
   );
