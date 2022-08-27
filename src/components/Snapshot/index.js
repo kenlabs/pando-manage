@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -10,13 +10,13 @@ import Chart from "../Chart/Provider";
 
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-const Provider = ({ onClose }) => {
+import dayjs from "dayjs";
+const Provider = ({ onClose, snapshot }) => {
   const [value, setValue] = React.useState("1");
-
+  const [selectedProvider, setSelectedProvider] = useState();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <>
       <AppBar sx={{ position: "relative" }}>
@@ -30,7 +30,7 @@ const Provider = ({ onClose }) => {
             <CloseIcon />
           </IconButton>
           <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="p">
-            Snapshot:kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
+            Snapshot:{snapshot?.PrevSnapShot}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -58,7 +58,11 @@ const Provider = ({ onClose }) => {
                 wordBreak: "break-word",
               }}
             >
-              2022-07-01 22:22:22
+              {snapshot?.CreateTime
+                ? dayjs(snapshot?.CreateTime / 1000 / 1000).format(
+                    "YYYY-MM-DD HH:mm:ss"
+                  )
+                : "-"}
             </Typography>
             <Divider></Divider>
 
@@ -66,24 +70,35 @@ const Provider = ({ onClose }) => {
               Providers
             </Typography>
             <Box sx={{ border: 2, borderColor: "divider", padding: 2 }}>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                style={{
-                  wordBreak: "break-word",
-                }}
-              >
-                kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                style={{
-                  wordBreak: "break-word",
-                }}
-              >
-                kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
-              </Typography>
+              {Object.keys(snapshot?.Update || {}).map((key) => {
+                return (
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    style={{
+                      wordBreak: "break-word",
+                      opacity: selectedProvider?.key === key ? 0.3 : 1,
+                    }}
+                    onClick={() => {
+                      setSelectedProvider({
+                        key,
+                        value: snapshot?.Update[key],
+                      });
+                    }}
+                  >
+                    <a
+                      key={key}
+                      href="#1"
+                      color="text.secondary"
+                      style={{
+                        color: "rgba(0, 0, 0, 0.6)",
+                      }}
+                    >
+                      {key}
+                    </a>
+                  </Typography>
+                );
+              })}
             </Box>
           </Box>
         </Grid>
@@ -115,24 +130,20 @@ const Provider = ({ onClose }) => {
                   padding: 2,
                 }}
               >
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  style={{
-                    wordBreak: "break-word",
-                  }}
-                >
-                  kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  style={{
-                    wordBreak: "break-word",
-                  }}
-                >
-                  kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5
-                </Typography>
+                {selectedProvider?.value?.MetaList?.map((item, index) => {
+                  return (
+                    <Typography
+                      key={index}
+                      variant="body2"
+                      color="text.secondary"
+                      style={{
+                        wordBreak: "break-word",
+                      }}
+                    >
+                      {item?.["/"]}
+                    </Typography>
+                  );
+                })}
               </Box>
             </Box>
           </Box>

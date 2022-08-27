@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Snapshot from "../../components/Snapshot";
-import { getSnapshots } from "apis/snapshots";
+import { getSnapshots, getSnapshotInfo } from "apis/snapshots";
 const rows = [
   {
     id: "1kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
@@ -94,8 +94,12 @@ const Snapshots = (props) => {
     },
   ];
   const [open, setOpen] = useState(false);
-
+  const [snapshot, setSnapshot] = useState();
   const handleClickOpen = (row) => {
+    getSnapshotInfo(row.id).then((res) => {
+      console.log(res);
+      setSnapshot(res?.data?.Data);
+    });
     setOpen(true);
   };
 
@@ -106,7 +110,13 @@ const Snapshots = (props) => {
 
   useEffect(() => {
     getSnapshots().then((res) => {
-      setSnapshots(res.data?.Data);
+      setSnapshots(
+        res.data?.Data.map((item) => {
+          return {
+            id: item["/"],
+          };
+        })
+      );
     });
   }, []);
 
@@ -114,7 +124,7 @@ const Snapshots = (props) => {
     <Page pageTitle="Snapshots">
       <PageContainer>
         <DataGrid
-          rows={rows}
+          rows={snapshots}
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[10]}
@@ -129,7 +139,7 @@ const Snapshots = (props) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <Snapshot onClose={handleClose} />
+        <Snapshot snapshot={snapshot} onClose={handleClose} />
       </Dialog>
     </Page>
   );
