@@ -8,62 +8,6 @@ import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Snapshot from "../../components/Snapshot";
 import { getSnapshots, getSnapshotInfo } from "apis/snapshots";
-const rows = [
-  {
-    id: "1kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Snow",
-    firstName: "Jon",
-    age: 35,
-  },
-  {
-    id: "2kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Lannister",
-    firstName: "Cersei",
-    age: 42,
-  },
-  {
-    id: "3kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Lannister",
-    firstName: "Jaime",
-    age: 45,
-  },
-  {
-    id: "4kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Stark",
-    firstName: "Arya",
-    age: 16,
-  },
-  {
-    id: "5kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Targaryen",
-    firstName: "Daenerys",
-    age: null,
-  },
-  {
-    id: "6kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Melisandre",
-    firstName: null,
-    age: 150,
-  },
-  {
-    id: "7kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Clifford",
-    firstName: "Ferrara",
-    age: 44,
-  },
-  {
-    id: "8kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Frances",
-    firstName: "Rossini",
-    age: 36,
-  },
-  {
-    id: "9kDIMU1ZfYgOqCXET3w4SJA5cBjv87zipruLKQGdRPx0m29ayFHheNon6sWVtlbicl9fHlMUjcaPXoRZz8TUgqSdrlHDObPIw2wD5",
-    lastName: "Roxie",
-    firstName: "Harvey",
-    age: 65,
-  },
-];
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -96,9 +40,12 @@ const Snapshots = (props) => {
   const [open, setOpen] = useState(false);
   const [snapshot, setSnapshot] = useState();
   const handleClickOpen = (row) => {
+    setSnapshot(null);
     getSnapshotInfo(row.id).then((res) => {
-      console.log(res);
-      setSnapshot(res?.data?.Data);
+      setSnapshot({
+        id: row.id,
+        content: res?.data?.Data,
+      });
     });
     setOpen(true);
   };
@@ -124,6 +71,7 @@ const Snapshots = (props) => {
     <Page pageTitle="Snapshots">
       <PageContainer>
         <DataGrid
+          key={"id"}
           rows={snapshots}
           columns={columns}
           pageSize={10}
@@ -139,7 +87,11 @@ const Snapshots = (props) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <Snapshot snapshot={snapshot} onClose={handleClose} />
+        <Snapshot
+          id={snapshot?.id}
+          snapshot={snapshot?.content}
+          onClose={handleClose}
+        />
       </Dialog>
     </Page>
   );

@@ -122,9 +122,7 @@ const Provider = ({ onClose, id, providerDetail }) => {
                 wordBreak: "break-word",
               }}
             >
-              {
-                // TODO: 确认字段
-              }
+              {providerDetail?.LatestMeta?.["/"]}
             </Typography>
           </Box>
         </Grid>

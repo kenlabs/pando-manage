@@ -6,17 +6,18 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import { Grid, Divider } from "@mui/material";
 import { Box } from "@mui/system";
-import Chart from "../Chart/Provider";
-
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 import dayjs from "dayjs";
-const Provider = ({ onClose, snapshot }) => {
-  const [value, setValue] = React.useState("1");
+const Provider = ({ onClose, id, snapshot }) => {
   const [selectedProvider, setSelectedProvider] = useState();
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  useEffect(() => {
+    const firstKey = Object.keys(snapshot?.Update || {});
+    if (firstKey && firstKey[0]) {
+      setSelectedProvider({
+        key: firstKey[0],
+        value: snapshot?.Update[firstKey[0]],
+      });
+    }
+  }, [snapshot]);
   return (
     <>
       <AppBar sx={{ position: "relative" }}>
@@ -30,7 +31,7 @@ const Provider = ({ onClose, snapshot }) => {
             <CloseIcon />
           </IconButton>
           <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="p">
-            Snapshot:{snapshot?.PrevSnapShot}
+            Snapshot:{id}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -88,7 +89,7 @@ const Provider = ({ onClose, snapshot }) => {
                   >
                     <a
                       key={key}
-                      href="#1"
+                      href="void();"
                       color="text.secondary"
                       style={{
                         color: "rgba(0, 0, 0, 0.6)",
@@ -122,6 +123,17 @@ const Provider = ({ onClose, snapshot }) => {
             >
               <Typography gutterBottom variant="h6" component="p">
                 Provider ID
+              </Typography>
+              <Typography
+                gutterBottom
+                variant="body2"
+                color="text.secondary"
+                style={{
+                  wordBreak: "break-word",
+                }}
+                component="p"
+              >
+                {selectedProvider?.key}
               </Typography>
               <Box
                 sx={{
