@@ -53,6 +53,7 @@ const Providers = () => {
                 <Grid item key={index}>
                   <ProviderCard
                     name={provider.name}
+                    ID={provider?.AddrInfo?.ID}
                     onClickDetail={() => {
                       handleClickOpen(provider);
                     }}

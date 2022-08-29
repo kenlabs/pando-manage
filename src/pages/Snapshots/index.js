@@ -22,7 +22,7 @@ const Snapshots = (props) => {
       width: 150,
     },
     {
-      headerName: "Detail",
+      headerName: "Operation",
       renderCell: (row) => {
         return (
           <Button
@@ -35,6 +35,7 @@ const Snapshots = (props) => {
           </Button>
         );
       },
+      width: 150,
     },
   ];
   const [open, setOpen] = useState(false);
@@ -76,7 +77,7 @@ const Snapshots = (props) => {
           columns={columns}
           pageSize={10}
           rowsPerPageOptions={[10]}
-          checkboxSelection
+          checkboxSelection={false}
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
         />

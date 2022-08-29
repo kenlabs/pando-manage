@@ -112,7 +112,13 @@ const Provider = ({ onClose }) => {
           </Box>
         </Grid>
         <Divider orientation="vertical" flexItem></Divider>
-        <Grid item xs={8}>
+        <Grid
+          item
+          xs={8}
+          style={{
+            opacity: 0.3,
+          }}
+        >
           <Box
             style={{
               padding: 24,
