@@ -15,78 +15,66 @@ const System = lazy(() => import("../pages/System/index"));
 const Snapshots = lazy(() => import("../pages/Snapshots/index"));
 const Log = lazy(() => import("../pages/Log/index"));
 const routes = [
-  {
-    path: "/signin",
-    exact: true,
-    element: (
-      <UnauthorizedRoute>
-        <SignIn redirectTo="/providers" />
-      </UnauthorizedRoute>
-    ),
-  },
-  {
-    path: "/signup",
-    exact: true,
-    element: (
-      <UnauthorizedRoute>
-        <SignUp redirectTo="/providers" />
-      </UnauthorizedRoute>
-    ),
-  },
-  {
-    path: "/password_reset",
-    exact: true,
-    element: (
-      <UnauthorizedRoute>
-        <PasswordReset redirectTo="/providers" />
-      </UnauthorizedRoute>
-    ),
-  },
-  {
-    path: "/my_account",
-    exact: true,
-    element: (
-      <AuthorizedRoute>
-        <MyAccount />
-      </AuthorizedRoute>
-    ),
-  },
+  // {
+  //   path: "/signin",
+  //   exact: true,
+  //   element: (
+  //     <UnauthorizedRoute>
+  //       <SignIn redirectTo="/providers" />
+  //     </UnauthorizedRoute>
+  //   ),
+  // },
+  // {
+  //   path: "/signup",
+  //   exact: true,
+  //   element: (
+  //     <UnauthorizedRoute>
+  //       <SignUp redirectTo="/providers" />
+  //     </UnauthorizedRoute>
+  //   ),
+  // },
+  // {
+  //   path: "/password_reset",
+  //   exact: true,
+  //   element: (
+  //     <UnauthorizedRoute>
+  //       <PasswordReset redirectTo="/providers" />
+  //     </UnauthorizedRoute>
+  //   ),
+  // },
+  // {
+  //   path: "/my_account",
+  //   exact: true,
+  //   element: (
+  //     <AuthorizedRoute>
+  //       <MyAccount />
+  //     </AuthorizedRoute>
+  //   ),
+  // },
   {
     path: "/providers",
     exact: true,
-    element: (
-      <AuthorizedRoute>
-        <Providers />
-      </AuthorizedRoute>
-    ),
+    element: <Providers />,
   },
   {
     path: "/system",
     exact: true,
-    element: (
-      <AuthorizedRoute>
-        <System />
-      </AuthorizedRoute>
-    ),
+    element: <System />,
   },
   {
     path: "/snapshots",
     exact: true,
-    element: (
-      <AuthorizedRoute>
-        <Snapshots />
-      </AuthorizedRoute>
-    ),
+    element: <Snapshots />,
   },
-  {
-    path: "/log",
-    exact: true,
-    element: (
-      <AuthorizedRoute>
-        <Log />
-      </AuthorizedRoute>
-    ),
-  },
+  // {
+  //   path: "/log",
+  //   exact: true,
+  //   element: (
+  //     <AuthorizedRoute>
+  //       <Log />
+  //     </AuthorizedRoute>
+  //   ),
+  // },
 ];
 
 export default routes;

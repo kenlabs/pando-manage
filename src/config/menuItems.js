@@ -5,7 +5,9 @@ import {
   ExitToApp as ExitToAppIcon,
   Lock as LockIcon,
 } from "@mui/icons-material";
-
+import SettingsSystemDaydreamIcon from "@mui/icons-material/SettingsSystemDaydream";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 const getMenuItems = (props) => {
   const { intl, menuContext, auth: authData } = props;
 
@@ -45,26 +47,26 @@ const getMenuItems = (props) => {
       value: "/providers",
       visible: isAuthorized,
       primaryText: "Providers",
-      leftIcon: <DashboardIcon />,
+      leftIcon: <AcUnitIcon />,
     },
     {
       value: "/system",
       visible: isAuthorized,
       primaryText: "System",
-      leftIcon: <DashboardIcon />,
+      leftIcon: <SettingsSystemDaydreamIcon />,
     },
     {
       value: "/snapshots",
       visible: isAuthorized,
       primaryText: "Snapshots",
-      leftIcon: <DashboardIcon />,
+      leftIcon: <GraphicEqIcon />,
     },
-    {
-      value: "/log",
-      visible: isAuthorized,
-      primaryText: "Log",
-      leftIcon: <DashboardIcon />,
-    },
+    // {
+    //   value: "/log",
+    //   visible: isAuthorized,
+    //   primaryText: "Log",
+    //   leftIcon: <DashboardIcon />,
+    // },
   ];
 };
 export default getMenuItems;

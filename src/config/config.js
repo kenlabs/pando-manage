@@ -40,9 +40,7 @@ const config = {
     initialMenuOpen: true,
     initialMobileMenuOpen: false,
     initialMiniSwitchVisibility: true,
-    MenuHeader: lazy(() =>
-      import("material-ui-shell/lib/components/MenuHeader/MenuHeader")
-    ),
+    MenuHeader: lazy(() => import("../components/MenuHeader")),
     MenuContent: lazy(() => import("../components/Menu/MenuContent")),
     useWindowWatcher: false,
   },
