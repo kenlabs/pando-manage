@@ -121,9 +121,6 @@ const Provider = ({ onClose, id, snapshot }) => {
                 padding: 2,
               }}
             >
-              <Typography gutterBottom variant="h6" component="p">
-                Provider ID
-              </Typography>
               <Typography
                 gutterBottom
                 variant="body2"
@@ -137,8 +134,6 @@ const Provider = ({ onClose, id, snapshot }) => {
               </Typography>
               <Box
                 sx={{
-                  border: 2,
-                  borderColor: "divider",
                   padding: 2,
                 }}
               >
