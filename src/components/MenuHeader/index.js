@@ -1,4 +1,3 @@
-import { Divider } from "@mui/material";
 import logo from "./pandao-logo.png";
 export default function MenuHeader() {
   return (

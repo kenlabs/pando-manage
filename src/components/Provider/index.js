@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -13,20 +13,20 @@ import Tabs from "@mui/material/Tabs";
 
 import dayjs from "dayjs";
 
-import { getProvidersOrProvider } from "apis/providers";
+// import { getProvidersOrProvider } from "apis/providers";
 const Provider = ({ onClose, id, providerDetail }) => {
   const [value, setValue] = React.useState("1");
-  const [provider, setProvider] = useState([]);
+  // const [provider, setProvider] = useState([]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    getProvidersOrProvider().then((res) => {
-      const provider = res.data?.Data?.registeredProviders;
-      setProvider(provider);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getProvidersOrProvider().then((res) => {
+  //     const provider = res.data?.Data?.registeredProviders;
+  //     setProvider(provider);
+  //   });
+  // }, []);
 
   return (
     <>
