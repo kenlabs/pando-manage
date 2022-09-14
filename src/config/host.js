@@ -1,1 +1,1 @@
-export const host = "https://pando-api.kencloud.com";
+export const host = "https://api.pando.network";
