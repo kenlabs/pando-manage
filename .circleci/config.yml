@@ -14,7 +14,6 @@ jobs:
           name: Install dependencies
           command: |
             npm install
-            npm run build
       - setup_remote_docker:
           docker_layer_caching: false
           version: 19.03.13
