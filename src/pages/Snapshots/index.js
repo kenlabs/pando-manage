@@ -8,6 +8,7 @@ import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import Snapshot from "../../components/Snapshot";
 import { getSnapshots, getSnapshotInfo } from "apis/snapshots";
+import dayjs from "dayjs";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -17,9 +18,12 @@ const Snapshots = (props) => {
   const columns = [
     { field: "id", headerName: "Snapshot ID", width: 700 },
     {
-      field: "firstName",
+      field: "CreatedTime",
       headerName: "CreateAt",
       width: 150,
+      renderCell: (row) => {
+        return dayjs(row?.value / 1000 / 1000).format("YYYY-MM-DD HH:mm:ss");
+      },
     },
     {
       headerName: "Operation",
@@ -59,9 +63,10 @@ const Snapshots = (props) => {
   useEffect(() => {
     getSnapshots().then((res) => {
       setSnapshots(
-        res.data?.Data.map((item) => {
+        res.data?.Data?.List.map((item) => {
           return {
-            id: item["/"],
+            id: item.SnapShotCid["/"],
+            CreatedTime: item.CreatedTime,
           };
         })
       );

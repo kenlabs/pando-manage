@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -89,7 +90,6 @@ const Provider = ({ onClose, id, snapshot }) => {
                   >
                     <a
                       key={key}
-                      href="void();"
                       color="text.secondary"
                       style={{
                         color: "rgba(0, 0, 0, 0.6)",
