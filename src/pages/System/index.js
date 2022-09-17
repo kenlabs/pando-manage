@@ -113,7 +113,7 @@ const Provider = ({ onClose }) => {
           >
             <Box sx={{ width: "100%" }}>
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391895304&to=1663413495304&theme=light&panelId=4"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=4"
                 width="50%"
                 height="200"
                 frameborder="0"
@@ -121,7 +121,7 @@ const Provider = ({ onClose }) => {
               ></iframe>
 
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391904674&to=1663413504674&theme=light&panelId=2"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=2"
                 width="50%"
                 height="200"
                 frameborder="0"

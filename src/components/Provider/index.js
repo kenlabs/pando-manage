@@ -126,7 +126,7 @@ const Provider = ({ onClose, id, providerDetail }) => {
           >
             <Box sx={{ width: "100%" }}>
               <iframe
-                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392135024&to=1663413735024&theme=light&panelId=14&peerID=${providerDetail?.AddrInfo?.ID}`}
+                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=14&peerID=${providerDetail?.AddrInfo?.ID}`}
                 width="100%"
                 height="400px"
                 frameborder="0"
@@ -135,7 +135,7 @@ const Provider = ({ onClose, id, providerDetail }) => {
               <br />
 
               <iframe
-                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392228363&to=1663413828363&theme=light&panelId=12&peerID=${providerDetail?.AddrInfo?.ID}`}
+                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=12&peerID=${providerDetail?.AddrInfo?.ID}`}
                 width="100%"
                 height="400px"
                 frameborder="0"
