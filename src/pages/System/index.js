@@ -104,7 +104,7 @@ const Provider = ({ onClose }) => {
             <Divider></Divider>
           </Box>
         </Grid>
-        <Divider orientation="vertical" flexItem></Divider>
+
         <Grid item xs={8}>
           <Box
             style={{
