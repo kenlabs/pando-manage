@@ -117,14 +117,8 @@ const Provider = ({ onClose, id, providerDetail }) => {
             </Typography>
           </Box>
         </Grid>
-        <Divider orientation="vertical" flexItem></Divider>
-        <Grid
-          item
-          xs={8}
-          style={{
-            opacity: 0.3,
-          }}
-        >
+        {/* <Divider orientation="vertical" flexItem></Divider> */}
+        <Grid item xs={8}>
           <Box
             style={{
               padding: 24,
@@ -132,18 +126,20 @@ const Provider = ({ onClose, id, providerDetail }) => {
           >
             <Box sx={{ width: "100%" }}>
               <iframe
-                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392135024&to=1663413735024&panelId=14&peerID=${providerDetail?.AddrInfo?.ID}`}
-                width="450"
-                height="200"
+                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392135024&to=1663413735024&theme=light&panelId=14&peerID=${providerDetail?.AddrInfo?.ID}`}
+                width="100%"
+                height="400px"
                 frameborder="0"
+                style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
+              <br />
 
               <iframe
-                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392228363&to=1663413828363&panelId=12&peerID=${providerDetail?.AddrInfo?.ID}`}
-                width="450"
-                height="200"
+                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392228363&to=1663413828363&theme=light&panelId=12&peerID=${providerDetail?.AddrInfo?.ID}`}
+                width="100%"
+                height="400px"
                 frameborder="0"
-                style={{ marginLeft: 10 }}
+                style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
             </Box>
           </Box>

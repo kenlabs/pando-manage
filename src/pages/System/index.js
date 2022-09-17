@@ -105,13 +105,7 @@ const Provider = ({ onClose }) => {
           </Box>
         </Grid>
         <Divider orientation="vertical" flexItem></Divider>
-        <Grid
-          item
-          xs={8}
-          style={{
-            opacity: 0.3,
-          }}
-        >
+        <Grid item xs={8}>
           <Box
             style={{
               padding: 24,
@@ -119,33 +113,35 @@ const Provider = ({ onClose }) => {
           >
             <Box sx={{ width: "100%" }}>
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391895304&to=1663413495304&panelId=4"
-                width="450"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391895304&to=1663413495304&theme=light&panelId=4"
+                width="50%"
                 height="200"
                 frameborder="0"
+                style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
 
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391904674&to=1663413504674&panelId=2"
-                width="450"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391904674&to=1663413504674&theme=light&panelId=2"
+                width="50%"
                 height="200"
                 frameborder="0"
-                style={{ marginLeft: 10 }}
+                style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
 
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391791941&to=1663413391941&panelId=6"
-                width="450"
-                height="200"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391791941&to=1663413391941&theme=light&panelId=6"
+                width="100%"
+                height="300px"
                 frameborder="0"
+                style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
 
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391874909&to=1663413474909&panelId=8"
-                width="450"
-                height="200"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391874909&to=1663413474909&theme=light&panelId=8"
+                width="100%"
+                height="300px"
                 frameborder="0"
-                style={{ marginLeft: 10 }}
+                style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
             </Box>
           </Box>
