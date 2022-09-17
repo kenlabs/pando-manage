@@ -1,18 +1,11 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import { Grid, Divider } from "@mui/material";
 import { Box } from "@mui/system";
-import Chart from "../../components/Chart/Provider";
 import Page from "material-ui-shell/lib/containers/Page";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 import { getSystemInfo } from "apis/system";
 const Provider = ({ onClose }) => {
-  const [value, setValue] = React.useState("1");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   const [systemInfo, setSystemInfo] = useState();
 
   useEffect(() => {
@@ -125,11 +118,35 @@ const Provider = ({ onClose }) => {
             }}
           >
             <Box sx={{ width: "100%" }}>
-              <Tabs value={value} onChange={handleChange}>
-                <Tab value="1" label="Notifications" />
-                <Tab value="2" label="DAGS" />
-              </Tabs>
-              <Chart />
+              <iframe
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391895304&to=1663413495304&panelId=4"
+                width="450"
+                height="200"
+                frameborder="0"
+              ></iframe>
+
+              <iframe
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391904674&to=1663413504674&panelId=2"
+                width="450"
+                height="200"
+                frameborder="0"
+                style={{ marginLeft: 10 }}
+              ></iframe>
+
+              <iframe
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391791941&to=1663413391941&panelId=6"
+                width="450"
+                height="200"
+                frameborder="0"
+              ></iframe>
+
+              <iframe
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391874909&to=1663413474909&panelId=8"
+                width="450"
+                height="200"
+                frameborder="0"
+                style={{ marginLeft: 10 }}
+              ></iframe>
             </Box>
           </Box>
         </Grid>

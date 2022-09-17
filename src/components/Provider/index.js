@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -6,21 +7,11 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import { Grid, Divider } from "@mui/material";
 import { Box } from "@mui/system";
-import Chart from "../Chart/Provider";
-
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 
 import dayjs from "dayjs";
 
 // import { getProvidersOrProvider } from "apis/providers";
 const Provider = ({ onClose, id, providerDetail }) => {
-  const [value, setValue] = React.useState("1");
-  // const [provider, setProvider] = useState([]);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   // useEffect(() => {
   //   getProvidersOrProvider().then((res) => {
   //     const provider = res.data?.Data?.registeredProviders;
@@ -140,11 +131,20 @@ const Provider = ({ onClose, id, providerDetail }) => {
             }}
           >
             <Box sx={{ width: "100%" }}>
-              <Tabs value={value} onChange={handleChange}>
-                <Tab value="1" label="Notifications" />
-                <Tab value="2" label="DAGS" />
-              </Tabs>
-              <Chart />
+              <iframe
+                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392135024&to=1663413735024&panelId=14&peerID=${providerDetail?.AddrInfo?.ID}`}
+                width="450"
+                height="200"
+                frameborder="0"
+              ></iframe>
+
+              <iframe
+                src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663392228363&to=1663413828363&panelId=12&peerID=${providerDetail?.AddrInfo?.ID}`}
+                width="450"
+                height="200"
+                frameborder="0"
+                style={{ marginLeft: 10 }}
+              ></iframe>
             </Box>
           </Box>
         </Grid>
