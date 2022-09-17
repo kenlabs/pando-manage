@@ -129,7 +129,7 @@ const Provider = ({ onClose }) => {
               ></iframe>
 
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391791941&to=1663413391941&theme=light&panelId=6"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=6"
                 width="100%"
                 height="300px"
                 frameborder="0"
@@ -137,7 +137,7 @@ const Provider = ({ onClose }) => {
               ></iframe>
 
               <iframe
-                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&from=1663391874909&to=1663413474909&theme=light&panelId=8"
+                src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=8"
                 width="100%"
                 height="300px"
                 frameborder="0"
