@@ -77,7 +77,6 @@ const Snapshots = (props) => {
     <Page pageTitle="Snapshots">
       <PageContainer>
         <DataGrid
-          key={"id"}
           rows={snapshots}
           columns={columns}
           pageSize={10}

@@ -116,7 +116,7 @@ const Provider = ({ onClose }) => {
                 src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=4"
                 width="50%"
                 height="200"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
 
@@ -124,7 +124,7 @@ const Provider = ({ onClose }) => {
                 src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=2"
                 width="50%"
                 height="200"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
 
@@ -132,7 +132,7 @@ const Provider = ({ onClose }) => {
                 src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=6"
                 width="100%"
                 height="300px"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
 
@@ -140,7 +140,7 @@ const Provider = ({ onClose }) => {
                 src="https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=8"
                 width="100%"
                 height="300px"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
             </Box>

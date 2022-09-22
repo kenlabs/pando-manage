@@ -32,7 +32,7 @@ const Provider = ({ onClose, id, providerDetail }) => {
             <CloseIcon />
           </IconButton>
           <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="p">
-            Provider:Dealbot
+            Provider: {providerDetail?.name}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -129,7 +129,7 @@ const Provider = ({ onClose, id, providerDetail }) => {
                 src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=14&peerID=${providerDetail?.AddrInfo?.ID}`}
                 width="100%"
                 height="400px"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
               <br />
@@ -138,7 +138,7 @@ const Provider = ({ onClose, id, providerDetail }) => {
                 src={`https://grafana.kencloud.com/d-solo/HHeNiW7Vk/pando?orgId=1&refresh=5s&theme=light&panelId=12&peerID=${providerDetail?.AddrInfo?.ID}`}
                 width="100%"
                 height="400px"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: "1px solid #e5e5e5" }}
               ></iframe>
             </Box>

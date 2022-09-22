@@ -18,7 +18,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 const Providers = () => {
   const [providers, setProviders] = useState([]);
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState();
   const handleClickOpen = (provider) => {
     setSelected(provider);
@@ -43,7 +43,7 @@ const Providers = () => {
               ...provider,
               name:
                 provider.Name ||
-                provider.AddrInfo?.ID.substr(
+                provider.AddrInfo?.ID.substring(
                   provider.AddrInfo?.ID?.length - 5,
                   provider.AddrInfo?.ID.length - 1
                 ),
