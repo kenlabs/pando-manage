@@ -1,7 +1,4 @@
-FROM node:16.5.0
+FROM nginx
 
-COPY . /opt/
-WORKDIR /opt
-RUN npm install
-
-CMD npm run start
+COPY ./build /usr/share/nginx/html
+COPY ./default.conf /etc/nginx/conf.d/default.conf
